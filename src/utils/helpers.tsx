@@ -16,6 +16,8 @@ export const SVGIcons = {
   },
 };
 
+export const DEFAULT_IP=process.env.REACT_APP_DEFAULT_IP;
+
 export const states: Map<string, string> = new Map<string, string>();
 states.set("Arizona", "AZ");
 states.set("Alabama", "AL");

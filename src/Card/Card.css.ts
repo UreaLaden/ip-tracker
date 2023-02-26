@@ -37,7 +37,7 @@ export const styles = mergeStyleSets({
     fontWeight: "bold",
     maxWidth:'100%',
     "@media (width > 1024px)":{
-        fontSize: "1.8rem",
+        fontSize: "1.5rem",
     },
     "@media (width <= 769px)": {
       fontSize: "6vw",

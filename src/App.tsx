@@ -4,6 +4,7 @@ import { styles } from "./App.css";
 import { Map } from "./Map/Map";
 import { Icon } from "@fluentui/react";
 import { Card } from "./Card/Card";
+import { DEFAULT_IP } from "./utils/helpers";
 
 function App() {
   const [locationData, setLocationData] = React.useState<ILocation>();
@@ -14,7 +15,7 @@ function App() {
 
   React.useEffect(() => {
     console.log("Loading Initial State");
-    fetchLocation(userInput).then((data) => setLocationData(data));
+    fetchLocation(DEFAULT_IP ?? userInput).then((data) => setLocationData(data));
   },[])
 
   React.useEffect(() => {

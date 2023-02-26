@@ -90,11 +90,11 @@ export const styles = mergeStyleSets({
     "@media (width > 1024px)": {
       top:"72%",
       left:"5%",
-      height:"30vh",
       width:"90vw",
       "grid-template-columns":"repeat(4,minmax(250px,1fr))",
       paddingLeft:"2%",
-      gap:"1%"
+      gap:"1%",
+      minHeight:"15vh"
     },
     "@media (width <= 769px )": {
       top:145,
