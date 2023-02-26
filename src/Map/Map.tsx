@@ -15,7 +15,7 @@ export const Map = (props: ILocation) => {
 
   const onLoad = React.useCallback((map:google.maps.Map) =>{
     const bounds = new window.google.maps.LatLngBounds(center);
-    map.setZoom(15);
+    map.setZoom(12);
     // map.fitBounds(bounds);
     setMap(map)
   },[])
@@ -28,7 +28,7 @@ export const Map = (props: ILocation) => {
     <GoogleMap
         mapContainerStyle={containerStyles}
         center={center}
-        zoom={15}
+        zoom={12}
         options={{mapId:`${process.env.REACT_APP_MAP_ID}`}}
         onLoad={onLoad}
         onUnmount={onUnmount}
