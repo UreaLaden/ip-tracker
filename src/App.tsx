@@ -1,25 +1,81 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { ILocation, fetchLocation } from "./Location/Location";
+import { styles } from "./App.css";
+import { Map } from "./Map/Map";
+import { Icon } from "@fluentui/react";
+import { Card } from "./Card/Card";
 
 function App() {
+  const [locationData, setLocationData] = React.useState<ILocation>();
+  const [shouldSearch, setShouldSearch] = React.useState<boolean>(false);
+  const searchRef = React.useRef<HTMLInputElement>(null);
+  const [userInput,setUserInput] = React.useState<string>('');
+  const [timer,setTimer] = React.useState<NodeJS.Timeout>();
+
+  React.useEffect(() => {
+    if (!shouldSearch) return;
+    fetchLocation(userInput).then((data) => setLocationData(data));
+    setShouldSearch(!shouldSearch);
+  }, [shouldSearch,userInput]);
+
+  const fetchLocationHandler = () => {
+    setShouldSearch(!shouldSearch);
+  };
+
+  const onChangeHandler = (_event:any) => {
+   setUserInput(_event.target.value);
+   clearTimeout(timer);
+
+   const newTimer = setTimeout(() =>{ },500);
+   setTimer(newTimer);
+   }
+
+  const generatedAddress = React.useMemo(() =>{
+    if(!locationData) return ''
+    const address = `${locationData?.city},${locationData?.state} ${locationData?.zipcode}`;
+    return address;
+  },[locationData]) 
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main className={styles.appContainer}>
+      <div className={styles.header}>
+        <h1>IP Address Tracker</h1>
+        <div className={styles.searchContainer}>
+          <label htmlFor="search"></label>
+          <input
+            ref={searchRef}
+            onChange={onChangeHandler}
+            className={styles.searchInput}
+            type="text"
+            id={"search"}
+            placeholder={"Search for any IP address or domain"}
+          />
+          <button
+            className={styles.searchButton}
+            onClick={fetchLocationHandler}
+          >
+            <Icon iconName={"arrow-right"} />
+          </button>
+        </div>
+        <div className={styles.locationDetails}>
+          <div className={styles.ip}>
+            <Card title={"IP ADDRESS"} details={locationData?.ip} />
+          </div>
+          <div className={styles.address}>
+          <Card title={"LOCATION"} details={generatedAddress} />
+          </div>
+          <div className={styles.timezone}>
+          <Card title={"TIMEZONE"} details={locationData?.timezone} />
+          </div>
+          <div className={styles.isp}>
+          <Card title={"ISP"} details={locationData?.isp} />
+          </div>
+        </div>
+      </div>
+      <div className={styles.map} id={"map"}>
+        {locationData && <Map {...locationData} />}
+      </div>
+    </main>
   );
 }
 
