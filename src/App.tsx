@@ -59,6 +59,7 @@ function App() {
           <button
             className={styles.searchButton}
             onClick={fetchLocationHandler}
+            aria-label="search button"
           >
             <Icon iconName={"arrow-right"} />
           </button>
