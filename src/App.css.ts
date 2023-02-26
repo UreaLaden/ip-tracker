@@ -94,7 +94,7 @@ export const styles = mergeStyleSets({
       width:"90vw",
       "grid-template-columns":"repeat(4,minmax(250px,1fr))",
       paddingLeft:"2%",
-      gap:"5%"
+      gap:"1%"
     },
     "@media (width <= 769px )": {
       top:145,

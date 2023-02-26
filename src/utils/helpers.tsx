@@ -25,6 +25,7 @@ states.set("California", "CA");
 states.set("Colorado", "CO");
 states.set("Connecticut", "CT");
 states.set("Delaware", "DE");
+states.set("District of Columbia", "DC");
 states.set("Florida", "FL");
 states.set("Georgia", "GA");
 states.set("Hawaii", "HI");

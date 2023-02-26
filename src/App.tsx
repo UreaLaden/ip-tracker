@@ -13,6 +13,11 @@ function App() {
   const [timer, setTimer] = React.useState<NodeJS.Timeout>();
 
   React.useEffect(() => {
+    console.log("Loading Initial State");
+    fetchLocation(userInput).then((data) => setLocationData(data));
+  },[])
+
+  React.useEffect(() => {
     if (!shouldSearch) return;
     fetchLocation(userInput).then((data) => setLocationData(data));
     setShouldSearch(!shouldSearch);
@@ -32,7 +37,7 @@ function App() {
 
   const generatedAddress = React.useMemo(() => {
     if (!locationData) return "";
-    const address = `${locationData?.city},${locationData?.state} ${locationData?.zipcode}`;
+    const address = `${locationData?.city}, ${locationData?.state} ${locationData?.zipcode}`;
     return address;
   }, [locationData]);
 

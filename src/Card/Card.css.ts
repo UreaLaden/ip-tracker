@@ -12,7 +12,7 @@ export const styles = mergeStyleSets({
     "@media (width > 1023px)": {
       justifyContent: "start",
       alignItems: "baseline",
-      padding: "15% 0 10% 5%",
+      padding: "15% 10% 10% 5%",
     },
     "@media (width <= 769px)": {
       justifyContent: "center",
@@ -21,10 +21,12 @@ export const styles = mergeStyleSets({
     },
   },
   cardTitle: {
-    color: "#2C2C2C",
+    color: "rgba(44,44,44,.5)",
     fontWeight: "900",
     marginBottom: "5%",
-    fontSize: "1.2vw",
+    "@media (width >= 1023)":{
+        fontSize:"1.1vw"
+    },
     "@media (width <= 769px)": {
       fontSize: "2vw",
       marginBottom: "1%",
@@ -33,7 +35,10 @@ export const styles = mergeStyleSets({
   cardInfo: {
     color: "#000000",
     fontWeight: "bold",
-    fontSize: "3vw",
+    maxWidth:'100%',
+    "@media (width > 1024px)":{
+        fontSize: "1.8rem",
+    },
     "@media (width <= 769px)": {
       fontSize: "6vw",
     },
@@ -46,7 +51,7 @@ export const styles = mergeStyleSets({
       width: "2px",
       position: "absolute",
       top: "20%",
-      right: "-20%",
+      right: "0%",
     },
   },
   cardWrapper: {
