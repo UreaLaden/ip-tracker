@@ -24,11 +24,11 @@ export const styles = mergeStyleSets({
     alignItems: "center",
     color: "#FFFFFF",
     backgroundRepeat: "round",
-    "@media (width > 1024px)": {
-      backgroundImage: "url('/images/pattern-bg-desktop.png')",
+    "@media (width > 770px)": {
+      backgroundImage: `url(${process.env.PUBLIC_URL}/images/pattern-bg-desktop.png)`,
     },
     "@media (width <= 769px )": {
-      backgroundImage: "url('/images/pattern-bg-mobile.png')",
+      backgroundImage: `url(${process.env.PUBLIC_URL}/images/pattern-bg-mobile.png)`,
     },
   },
   searchContainer: {

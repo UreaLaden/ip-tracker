@@ -9,26 +9,27 @@ export const Map = (props: ILocation) => {
   const center = {lat:lat,lng:long};
   const {isLoaded} = useJsApiLoader({
     id:'google-map-script',
-    googleMapsApiKey:`${process.env.REACT_APP_GOOGLE_API_KEY}`
+    googleMapsApiKey:`${process.env.REACT_APP_GOOGLE_API_KEY}`,
   });
-  const [map,setMap] = React.useState(null);
+  const [map,setMap] = React.useState<google.maps.Map>();
 
-  const onLoad = React.useCallback((map:any) =>{
+  const onLoad = React.useCallback((map:google.maps.Map) =>{
     const bounds = new window.google.maps.LatLngBounds(center);
-    map.setZoom(13);
+    map.setZoom(15);
     // map.fitBounds(bounds);
     setMap(map)
   },[])
 
   const onUnmount = React.useCallback((map:any) => {
-    setMap(null)
+    setMap(undefined);
   },[]);
 
   return isLoaded ? (
     <GoogleMap
         mapContainerStyle={containerStyles}
         center={center}
-        zoom={14}
+        zoom={15}
+        options={{mapId:`${process.env.REACT_APP_MAP_ID}`}}
         onLoad={onLoad}
         onUnmount={onUnmount}
     > 
