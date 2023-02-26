@@ -15,7 +15,7 @@ function App() {
 
   React.useEffect(() => {
     console.log("Loading Initial State");
-    fetchLocation(DEFAULT_IP ?? userInput).then((data) => setLocationData(data));
+    fetchLocation(userInput).then((data) => setLocationData(data));
   },[])
 
   React.useEffect(() => {
