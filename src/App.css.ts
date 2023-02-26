@@ -87,22 +87,22 @@ export const styles = mergeStyleSets({
     "z-index":"200",
     overflow:'visible',
     display:'grid',
-    "grid-template-columns":"repeat(4,minmax(250px,1fr))",
     "@media (width > 1024px)": {
       top:"72%",
       left:"5%",
       height:"30vh",
-      width:"90vw"
+      width:"90vw",
+      "grid-template-columns":"repeat(4,minmax(250px,1fr))",
+      paddingLeft:"2%",
+      gap:"5%"
     },
     "@media (width <= 769px )": {
       top:145,
       left:20,
       height:"30vh",
-      width:"90vw"
+      width:"90vw",
+      "grid-template-rows":"repeat(4,1fr)",
+      paddingTop:"5%",
     },
-  },
-  ip:{},
-  address:{},
-  timezone:{},
-  isp:{}
+  },  
 });

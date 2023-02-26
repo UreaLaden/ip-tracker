@@ -1,3 +1,5 @@
+import { states } from "../utils/helpers";
+
 export interface ILocation{
     ip:string;
     city:string;
@@ -20,9 +22,9 @@ export const fetchLocation = async (input:string):Promise<ILocation> => {
             const location:ILocation = {
                 ip:data.ip,
                 city:data.location.city,
-                state:data.location.region,
+                state:states.get(data.location.region) ?? data.location.region,
                 zipcode:data.location.postalCode,
-                timezone:data.location.timezone,
+                timezone:'UTC' + data.location.timezone,
                 isp:data.isp,
                 lat:data.location.lat,
                 long:data.location.lng
